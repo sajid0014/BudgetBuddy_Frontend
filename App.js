@@ -28,13 +28,9 @@ import Otp from "./src/screens/Otp";
 import Camera from "./src/screens/Camera"; // Adjusted import paths
 import FinancialReportScreen from "./src/screens/FinancialReportScreen";
 import { useState, useEffect } from 'react'
-import SMSAndroid from 'react-native-get-sms-android';
-import BackgroundService from 'react-native-background-actions';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-const { SMSReceiverModule } = NativeModules;
-const smsEventEmitter = new NativeEventEmitter(SMSReceiverModule);
 
 function BottomTabs() {
   const windowWidth = Dimensions.get("window").width;
@@ -83,26 +79,26 @@ function BottomTabs() {
         options={{
           tabBarShowLabel: false,
           headerShown: false,
-          tabBarItemStyle: {
-            backgroundColor: "#1CAC78",
-            marginBottom: 10,
-            marginTop: -25,
-            borderRadius: 35,
-            paddingTop: 10,
-            shadowColor: "#000",
-            shadowOffset: { width: 6, height: 6 },
-            shadowOpacity: 0.83,
-            shadowRadius: 6,
-            elevation: 6,
-            position:"relative"
-          },
+          // tabBarItemStyle: {
+          //   backgroundColor: "#1CAC78",
+          //   // marginBottom: 10,
+          //   // marginTop: -25,
+          //   // borderRadius: 35,
+          //   // paddingTop: 10,
+          //   // shadowColor: "#000",
+          //   // shadowOffset: { width: 6, height: 6 },
+          //   // shadowOpacity: 0.83,
+          //   // shadowRadius: 6,
+          //   // elevation: 6,
+          //   // position:"relative"
+          // },
           tabBarIcon: () => (
-            <MaterialIcons name="control-camera" size={35} style={{position:"absolute",}} color="white" />
+            <MaterialIcons name="control-camera" size={35} style={{position:"absolute",}} color="#1CAC78" />
           ),
         }}
       />
 
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Resources"
         component={Resources}
         options={{
@@ -115,7 +111,7 @@ function BottomTabs() {
               <Feather name="book" size={24} color="#1CAC78" />
             ),
         }}
-      />
+      /> */}
 
       <Tab.Screen
         name="Profile"
@@ -144,109 +140,6 @@ function BottomTabs() {
 }
 
 function App() {
-  // const [smsList, setSmsList] = useState([]);
-  // const sleep = (time) => new Promise((resolve) => setTimeout(() => resolve(), time));
-
-  // const veryIntensiveTask = async (taskDataArguments) => {
-  //   const { delay } = taskDataArguments;
-
-  //   await new Promise(async (resolve) => {
-  //     while (BackgroundService.isRunning()) {
-  //       console.log('📩 Listening for incoming SMS...');
-  //       // SMSAndroid.list(
-  //       //   JSON.stringify({ box: 'inbox', maxCount: 1 }),  // Only fetch the latest SMS
-  //       //   (fail) => console.error('Failed to fetch SMS:', fail),
-  //       //   (count, smsList) => {
-  //       //     const messages = JSON.parse(smsList);
-  //       //     if (messages && messages.length > 0) {
-  //       //       const latestMessage = messages[0];
-  //       //       setSmsList((prevSmsList) => [latestMessage, ...prevSmsList]);
-  //       //     }
-  //       //   }
-  //       // );
-
-  //       await BackgroundService.updateNotification({
-  //         taskDesc: '📡 Listening for SMS in background...'
-  //       });
-
-  //       await sleep(delay);  // Delay to reduce battery consumption
-  //     }
-  //   });
-  // };
-
-  // const options = {
-  //   taskName: 'SMS Listener',
-  //   taskTitle: 'SMS Listener Running',
-  //   taskDesc: 'Listening for new SMS messages',
-  //   taskIcon: {
-  //     name: 'ic_launcher',
-  //     type: 'mipmap',
-  //   },
-  //   color: '#841584',
-  //   parameters: {
-  //     delay: 5000, // 5 seconds delay for background checks
-  //   },
-  // };
-
-  // async function getPermissions() {
-  //   try {
-  //     const granted = await PermissionsAndroid.requestMultiple([
-  //       PermissionsAndroid.PERMISSIONS.RECEIVE_SMS,
-  //       PermissionsAndroid.PERMISSIONS.READ_SMS,
-  //     ]);
-
-  //     return (
-  //       granted['android.permission.READ_SMS'] === PermissionsAndroid.RESULTS.GRANTED &&
-  //       granted['android.permission.RECEIVE_SMS'] === PermissionsAndroid.RESULTS.GRANTED
-  //     );
-  //   } catch (error) {
-  //     console.error("Error requesting SMS permission:", error);
-  //     return false;
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   async function fetchSMS() {
-  //     const hasPermission = await getPermissions();
-
-  //     if (hasPermission) {
-  //       SMSAndroid.list(
-  //         JSON.stringify({ box: 'inbox', maxCount: 1 }),
-  //         (fail) => console.error('Failed to fetch SMS:', fail),
-  //         (count, smsList) => {
-  //           const messages = JSON.parse(smsList);
-  //           setSmsList(messages);
-  //         }
-  //       );
-  //     }
-  //   }
-
-  //   const runBackgroundTask = async () => {
-  //     await BackgroundService.start(veryIntensiveTask, options);
-  //     await BackgroundService.updateNotification({
-  //       taskDesc: '📡 Listening for SMS in background...'
-  //     });
-  //   };
-
-  //   const stopBackgroundTask = async () => {
-  //     await BackgroundService.stop();
-  //   };
-
-  //   const smsSubscription = smsEventEmitter.addListener('onNewSMS', (newSms) => {
-  //     console.log("New SMS Received: ",newSms);
-  //     setSmsList((prevSmsList) => [newSms, ...prevSmsList]);
-  //   });
-  //   console.log("UseEffect Executed");
-
-  //   fetchSMS();
-
-  //   stopBackgroundTask();
-  //   runBackgroundTask();
-
-  //   return () => {
-  //     smsSubscription.remove();
-  //   };
-  // }, []);
 
   return (
     <NavigationContainer>

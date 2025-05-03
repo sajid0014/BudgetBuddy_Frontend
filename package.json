@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.1.1",
+    "@react-native-community/datetimepicker": "^8.3.0",
     "@react-native-picker/picker": "^2.11.0",
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/native": "^7.0.14",
@@ -18,12 +19,14 @@
     "@react-navigation/stack": "^7.1.1",
     "@voximplant/react-native-foreground-service": "^3.0.2",
     "dotenv": "^16.4.7",
+    "fs": "^0.0.1-security",
     "lottie-ios": "^4.5.1",
     "lottie-react-native": "^7.2.2",
     "moment": "^2.30.1",
     "os": "^0.1.2",
     "path": "^0.12.7",
     "react": "18.3.1",
+    "react-dom": "^18.3.1",
     "react-native": "0.77.1",
     "react-native-background-actions": "^4.0.1",
     "react-native-chart-kit": "^6.12.0",
@@ -44,7 +47,8 @@
     "react-native-share": "^12.0.9",
     "react-native-svg": "^15.11.2",
     "react-native-vector-icons": "^10.2.0",
-    "react-native-view-shot": "^4.0.3"
+    "react-native-view-shot": "^4.0.3",
+    "react-router-dom": "^7.5.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
